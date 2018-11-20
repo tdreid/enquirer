@@ -17,26 +17,27 @@
 
 <p align="center">
 <b>Stylish CLI prompts that are user-friendly, intuitive and easy to create.</b><br>
-<sub>>_ Prompts should be more like conversations than inquisitions▌<sub>
+<sub>>_ Prompts should be more like conversations than inquisitions▌</sub>
 </p>
 
 <br>
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/survey-prompt.gif" alt="Enquirer Survey Prompt" width="750">
+<sub>(Example shows Enquirer's <a href="#survey-prompt">Survey Prompt</a>)</a></sub>
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/survey-prompt.gif" alt="Enquirer Survey Prompt" width="750"><br>
+<sub>The terminal in all examples is <a href="https://hyper.is/">Hyper</a>, theme is <a href="https://github.com/jonschlinkert/hyper-monokai-extended">hyper-monokai-extended</a>.</sub><br><br>
+<a href="#built-in-prompts"><strong>See more prompt examples</strong></a>
 </p>
 
 <br>
 <br>
-
-Please consider starting or tweeting about this project to show your support. Thanks!
 
 Created by [jonschlinkert](https://github.com/jonschlinkert) and [doowb](https://github.com/doowb), Enquirer is fast, easy to use, and lightweight enough for small projects, while also being powerful and customizable enough for the most advanced use cases.
 
 * **Fast** - [Loads in ~4ms](#-performance) (that's about _3-4 times faster than a [single frame of a HD movie](http://www.endmemo.com/sconvert/framespersecondframespermillisecond.php) at 60fps_)
 * **Lightweight** - Only one dependency, the excellent [ansi-colors](https://github.com/doowb/ansi-colors) by [Brian Woodward](https://github.com/doowb).
 * **Easy to implement** - Uses promises and async/await and sensible defaults to make prompts easy to create and implement.
-* **Easy to use** - Thrill your users with a better experience! Navigating around input and choices is a breeze. You can even create [quizzes](recipes/quiz.js), or [record](recipes/record.js) and [playback](recipes/play.js) keypresses to aid with tutorials and videos.
+* **Easy to use** - Thrill your users with a better experience! Navigating around input and choices is a breeze. You can even create [quizzes](examples/fun/countdown.js), or [record](examples/fun/record.js) and [playback](examples/fun/play.js) key bindings to aid with tutorials and videos.
 * **Intuitive** - Keypress combos are available to simplify usage.
 * **Flexible** - All prompts can be used standalone or chained together.
 * **Stylish** - Easily override semantic styles and symbols for any part of the prompt.
@@ -44,15 +45,15 @@ Created by [jonschlinkert](https://github.com/jonschlinkert) and [doowb](https:/
 * **Pluggable** - Add advanced features to Enquirer using plugins.
 * **Validation** - Optionally validate user input with any prompt.
 * **Well tested** - All prompts are well-tested, and tests are easy to create without having to use brittle, hacky solutions to spy on prompts or "inject" values.
-* **Examples** - There are numerous [examples](examples) and [recipes](recipes) available to help you get started.
+* **Examples** - There are numerous [examples](examples) and [examples](examples) available to help you get started.
 
-_(If you like Enquirer, you might also like [micromatch](https://github.com/micromatch/micromatch), created by [Jon Schlinkert](https://github.com/jonschlinkert), author of Enquirer)_.
+If you like Enquirer, please consider starring or tweeting about this project to show your support. Thanks!
 
 <br>
 
 <p align="center">
-<b>Ready to start making prompts your users will love?</b><br>
-<img src="https://github.com/enquirer/enquirer/raw/master/media/heartbeat.gif" alt="Enquirer Select Prompt with heartbeat example" width="750">
+<b>>_ Ready to start making prompts your users will love? ▌</b><br>
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/heartbeat.gif" alt="Enquirer Select Prompt with heartbeat example" width="750">
 </p>
 
 <br>
@@ -65,9 +66,10 @@ Get started with Enquirer, the most powerful and easy-to-use Node.js library for
 * [Install](#-install)
 * [Usage](#-usage)
 * [Enquirer](#-enquirer)
-* [Built-in Prompts](#-prompts)
-* [Custom Prompts](#-custom-prompts)
-* [Keypresses](#-keypresses)
+* [Prompts](#-prompts)
+  - [Built-in Prompts](#-prompts)
+  - [Custom Prompts](#-custom-prompts)
+* [Key Bindings](#-key-bindings)
 * [Options](#-options)
 * [Release History](#-release-history)
 * [Performance](#-performance)
@@ -84,7 +86,7 @@ $ npm install enquirer
 ```
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/npm-install.gif" alt="Install Enquirer with NPM" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/npm-install.gif" alt="Install Enquirer with NPM" width="750">
 </p>
 
 _(Requires Node.js 8.6 or higher. Please let us know if you need support for an earlier version by creating an [issue](../../issues/new).)_
@@ -134,11 +136,11 @@ console.log(response);
 //=> { name: 'Edward Chan', username: 'edwardmchan' }
 ```
 
-**Jump to**: [Getting Started](#-getting-started) · [Prompts](#-prompts) · [Options](#-options) · [Keypresses](#-keypresses)
+**Jump to**: [Getting Started](#-getting-started) · [Prompts](#-prompts) · [Options](#-options) · [Key Bindings](#-key-bindings)
 
 <br>
 
-## TODO
+### Todo
 
 We're currently working on documentation for the following items. Please star and watch the repository for updates!
 
@@ -146,12 +148,13 @@ We're currently working on documentation for the following items. Please star an
 * [ ] Customizing styles (palette)
 * [ ] Customizing rendered input
 * [ ] Customizing returned values
+* [ ] Customizing key bindings
 * [ ] Question validation
 * [ ] Choice validation
 * [ ] Skipping questions
 * [ ] Async choices
-* [ ] Async loaders, spinners and other timers
-* [ ] Links to recipes
+* [ ] Async timers: loaders, spinners and other animations
+* [ ] Links to examples
 
 <br>
 
@@ -270,7 +273,7 @@ const response = await enquirer.prompt({
 console.log(response);
 ```
 
-### [use](index.js#L151)
+### [use](index.js#L157)
 
 Use an enquirer plugin.
 
@@ -290,7 +293,7 @@ const plugin = enquirer => {
 enquirer.use(plugin);
 ```
 
-### [Enquirer#prompt](index.js#L212)
+### [Enquirer#prompt](index.js#L207)
 
 Prompt function that takes a "question" object or array of question objects, and returns an object with responses from the user.
 
@@ -313,28 +316,10 @@ console.log(response);
 
 ## ❯ Prompts
 
-* [Built-in prompts](#built-in-prompts)
-* [Prompt Options](#options)
-
-### Built-in prompts
-
 * [Prompt](#prompt) - The base `Prompt` class used by other prompts
-* [AutoComplete](#autocomplete-prompt)
-* [Confirm](#confirm-prompt)
-* [Form](#form-prompt)
-* [hSelect](#hselect-prompt) (horizontal select)
-* [hMultiSelect](#hmultiselect-prompt) (horizontal multiselect)
-* [Input](#input-prompt)
-* [Invisible](#invisible-prompt)
-* [List](#list-prompt)
-* [MultiSelect](#multiselect-prompt)
-* [Number](#number-prompt)
-* [Password](#password-prompt)
-* [Select](#select-prompt)
-* [Snippet](#snippet-prompt)
-* [Sort](#sort-prompt)
-* [Survey](#survey-prompt)
-* [Text](#input-prompt) (alias for the [Input prompt](#input-prompt))
+  - [Prompt Options](#prompt-options)
+  - [Prompt Types](#prompt-types) - The base `Prompt` class used by other prompts
+* [Built-in prompts](#built-in-prompts)
 
 ### Prompt
 
@@ -347,13 +332,90 @@ class MyCustomPrompt extends Prompt {}
 
 See the documentation for [creating custom prompts](#-custom-prompts) to learn more about how this works.
 
+### Prompt Options
+
+Each prompt takes an options object (aka "question" object), that implements the following interface:
+
+```js
+{
+  // required
+  type: string | function,
+  name: string | function,
+  message: string | function | async function,
+
+  // optional 
+  skip: boolean | function | async function
+  initial: string | function | async function
+  format: function | async function,
+  result: function | async function,
+  validate: function | async function
+}
+```
+
+### General options
+
+All prompts take the following options.
+
+| **Property** | **Required?** | **Type** | **Description** |
+| --- | --- | --- | --- |
+| `type`     | Yes | `string\|function` | Enquirer uses this value to determine the type of prompt to run, but it's optional when prompts are run directly. |
+| `name`     | Yes | `string\|function` | Used as the key for the answer on the returned values (answers) object. |
+| `message`  | Yes | `string\|function` | The message to display when the prompt is rendered in the terminal. |
+| `skip`  | no | `boolean\|function` | If `true` it will not ask that prompt. |
+| `initial`  | no | `string\|function` | The default value to return if the user does not supply a value. |
+| `format`   | no | `function` | Function to format user input in the terminal. |
+| `result`   | no | `function` | Function to format the final submitted value before it's returned. |
+| `validate` | no | `function` | Function to validate the submitted value before it's returned. This function may return a boolean or a string. If a string is returned it will be used as the validation error message. |
+
+**Example usage**
+
+```js
+const { prompt } = require('enquirer');
+
+const question = {
+  type: 'input',
+  name: 'username',
+  message: 'What is your username?'
+};
+
+prompt(question)
+  .then(answer => console.log('Answer:', answer))
+  .catch(console.error);
+```
+
+<br>
+
+### Built-in prompts
+
+* [AutoComplete](#autocomplete-prompt)
+* [Confirm](#confirm-prompt)
+* [Form](#form-prompt)
+* [Input](#input-prompt)
+* [Invisible](#invisible-prompt)
+* [List](#list-prompt)
+* [Scale](#scale-prompt)
+* [MultiSelect](#multiselect-prompt)
+* [Number](#number-prompt)
+* [Password](#password-prompt)
+* [Select](#select-prompt)
+* [Snippet](#snippet-prompt)
+* [Sort](#sort-prompt)
+* [Survey](#survey-prompt)
+* [Text](#input-prompt) (alias for the [Input prompt](#input-prompt))
+
 ### AutoComplete Prompt
 
 Prompt that auto-completes as the user types, and returns the selected value as a string.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/autocomplete-prompt.gif" alt="Enquirer AutoComplete Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/autocomplete-prompt.gif" alt="Enquirer AutoComplete Prompt" width="750">
 </p>
+
+**Related prompts**
+
+* [Select](#select-prompt)
+* [MultiSelect](#multiselect-prompt)
+* [Survey](#survey-prompt)
 
 **Example Usage**
 
@@ -385,12 +447,6 @@ const question = {
 | `multiple`  | `boolean` | `false` | Allow multiple choices to be selected. |
 | `suggest`   | `function` | Greedy match, returns true if choice message contains input string. | Function that filters choices. Takes user input and a choices array, and returns a list of matching choices. |
 
-**Related prompts**
-
-* [Select](#select-prompt)
-* [MultiSelect](#multiselect-prompt)
-* [Survey](#survey-prompt)
-
 **↑ back to:** [Getting Started](#-getting-started) · [Prompts](#-prompts)
 
 <br>
@@ -401,7 +457,7 @@ const question = {
 Prompt that returns `true` or `false`.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/confirm-prompt.gif" alt="Enquirer Confirm Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/confirm-prompt.gif" alt="Enquirer Confirm Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -420,7 +476,7 @@ Prompt that returns `true` or `false`.
 Prompt that allows the user to enter and submit multiple values on a single terminal screen.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/form-prompt.gif" alt="Enquirer Form Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/form-prompt.gif" alt="Enquirer Form Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -433,79 +489,22 @@ Prompt that allows the user to enter and submit multiple values on a single term
 <br>
 <br>
 
-### hSelect Prompt
-
-The `hSelect` (Horizontal Select) allows the user to select from a horizontal list of choices.
-
-<p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/hselect-prompt.gif" alt="Enquirer Horizontal Select / hSelect Prompt" width="750">
-</p>
-
-**Related prompts**
-
-* [Select](#select-prompt)
-* [MultiSelect](#multiselect-prompt)
-* [Hmultiselect](#hmultiselect-prompt)
-
-**↑ back to:** [Getting Started](#-getting-started) · [Prompts](#-prompts)
-
-<br>
-<br>
-
-### hMultiSelect Prompt
-
-The `hMultiSelect` (Horizontal MultiSelect) allows the user to select multiple items from a horizontal list of choices.
-
-<p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/hmultiselect-prompt.gif" alt="Enquirer Horizontal MultiSelect / hMultiSelect Prompt" width="750">
-</p>
-
-**Related prompts**
-
-* [Select](#select-prompt)
-* [Hselect](#hselect-prompt)
-* [MultiSelect](#multiselect-prompt)
-
-**↑ back to:** [Getting Started](#-getting-started) · [Prompts](#-prompts)
-
-<br>
-<br>
-
 ### Input Prompt
 
 Prompt that takes user input and returns a string.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/input-prompt.gif" alt="Enquirer Input Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/input-prompt.gif" alt="Enquirer Input Prompt" width="750">
 </p>
 
 **Usage**
 
-Usage with Enquirer.
-
 ```js
-const { prompt } = require('enquirer');
 const question = { 
   type: 'input', 
   name: 'username', 
   message: 'What is your username?' 
 };
-
-let answers = await prompt(question);
-console.log('Username:', answers.username);
-```
-
-Usage as a standalone prompt. Use this approach if you need to modify the prompt instance, or listen for events on the prompt.
-
-```js
-const { Input } = require('enquirer');
-const prompt = new Input({ 
-  name: 'username', 
-  message: 'What is your username?' 
-});
-
-let answer = await prompt.run();
-console.log('Username:', answer);
 ```
 
 **Related prompts**
@@ -524,7 +523,7 @@ console.log('Username:', answer);
 Prompt that takes user input, hides it from the terminal, and returns a string.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/invisible-prompt.gif" alt="Enquirer Invisible Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/invisible-prompt.gif" alt="Enquirer Invisible Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -542,7 +541,7 @@ Prompt that takes user input, hides it from the terminal, and returns a string.
 Prompt that returns a list of values, created by splitting the user input. The default split character is `,` with optional trailing whitespace.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/list-prompt.gif" alt="Enquirer List Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/list-prompt.gif" alt="Enquirer List Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -555,12 +554,12 @@ Prompt that returns a list of values, created by splitting the user input. The d
 <br>
 <br>
 
-### MultiScale Prompt
+### Scale Prompt
 
 Prompt that allows the user to quickly provide feedback using a [Likert Scale](https://en.wikipedia.org/wiki/Likert_scale).
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/multiscale-prompt.gif" alt="Enquirer MultiScale Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/scale-prompt.gif" alt="Enquirer Scale Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -579,13 +578,14 @@ Prompt that allows the user to quickly provide feedback using a [Likert Scale](h
 Prompt that allows the user to select multiple items from a list of options.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/multiselect-prompt.gif" alt="Enquirer MultiSelect Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/multiselect-prompt.gif" alt="Enquirer MultiSelect Prompt" width="750">
 </p>
 
 **Related prompts**
 
-* [Select](#select-prompt)
 * [AutoComplete](#autocomplete-prompt)
+* [Select](#select-prompt)
+* [Survey](#survey-prompt)
 
 **↑ back to:** [Getting Started](#-getting-started) · [Prompts](#-prompts)
 
@@ -597,7 +597,7 @@ Prompt that allows the user to select multiple items from a list of options.
 Prompt that takes a number as input.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/numeral-prompt.gif" alt="Enquirer Numeral Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/numeral-prompt.gif" alt="Enquirer Numeral Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -615,7 +615,7 @@ Prompt that takes a number as input.
 Prompt that takes user input and masks it in the terminal. Also see the [invisible prompt](#invisible-prompt)
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/password-prompt.gif" alt="Enquirer Password Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/password-prompt.gif" alt="Enquirer Password Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -633,7 +633,7 @@ Prompt that takes user input and masks it in the terminal. Also see the [invisib
 Prompt that allows the user to select from a list of options.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/select-prompt.gif" alt="Enquirer Select Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/select-prompt.gif" alt="Enquirer Select Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -651,7 +651,7 @@ Prompt that allows the user to select from a list of options.
 Prompt that allows the user to replace placeholders in a snippet of code or text.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/snippet-prompt.gif" alt="Prompts" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/snippet-prompt.gif" alt="Prompts" width="750">
 </p>
 
 **Related prompts**
@@ -673,7 +673,7 @@ Prompt that allows the user to sort items in a list.
 In this [example](https://github.com/enquirer/enquirer/raw/master/examples/sort/prompt.js), custom styling is applied to the returned values to make it easier to see what's happening.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/sort-prompt.gif" alt="Enquirer Sort Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/sort-prompt.gif" alt="Enquirer Sort Prompt" width="750">
 </p>
 
 **Related prompts**
@@ -691,19 +691,19 @@ In this [example](https://github.com/enquirer/enquirer/raw/master/examples/sort/
 Prompt that allows the user to provide feedback for a list of questions.
 
 <p align="center">
-<img src="https://github.com/enquirer/enquirer/raw/master/media/survey-prompt.gif" alt="Enquirer Survey Prompt" width="750">
+<img src="https://raw.githubusercontent.com/enquirer/enquirer/master/media/survey-prompt.gif" alt="Enquirer Survey Prompt" width="750">
 </p>
 
 **Related prompts**
 
-* [MultiScale](#multiscale-prompt)
+* [Scale](#scale-prompt)
 * [Snippet](#snippet-prompt)
 * [Select](#select-prompt)
 
 <br>
 <br>
 
-## ❯ Types
+## ❯ Prompt Types
 
 Enquirer 2.0 introduced the concept of prompt "types", with the goal of making custom prompts easier than ever to create and use. There are 4 (soon to be 5!) type classes:
 
@@ -809,18 +809,20 @@ const question = {
   message: 'Favorite fruit?'
   choices: ['Apple', 'Orange', 'Raspberry']
 };
+```
 
-// Normalizes to the following when the prompt is run:
-// 
-// const question = {
-//   name: 'fruit',
-//   message: 'Favorite fruit?'
-//   choices: [
-//     { name: 'Apple', message: 'Apple', value: 'Apple' },
-//     { name: 'Orange', message: 'Orange', value: 'Orange' },
-//     { name: 'Raspberry', message: 'Raspberry', value: 'Raspberry' }
-//   ]
-// }
+Normalizes to the following when the prompt is run:
+
+```js
+const question = {
+  name: 'fruit',
+  message: 'Favorite fruit?'
+  choices: [
+    { name: 'Apple', message: 'Apple', value: 'Apple' },
+    { name: 'Orange', message: 'Orange', value: 'Orange' },
+    { name: 'Raspberry', message: 'Raspberry', value: 'Raspberry' }
+  ]
+};
 ```
 
 #### Choice properties
@@ -908,10 +910,9 @@ const prompt = new HaiKarate({
 prompt.run()
   .then(answer => console.log('Sprays:', answer))
   .catch(console.error);
-
 ```
 
-To register a custom prompt, you must first instantiate `Enquirer`.
+If you want to be able to specify your prompt by `type` so that it may be used alongside other prompts, you will need to first create an instance of `Enquirer`.
 
 ```js
 const Enquirer = require('enquirer');
@@ -942,24 +943,25 @@ let answers = await enquirer.prompt([
 ]);
 ```
 
-## ❯ Keypresses
+## ❯ Key Bindings
 
 ### All prompts
 
-Key combinations that may be used with all prompts.
+These key combinations may be used with all prompts.
 
 | **command** | **description** |
-| ---: | --- |
-| <kbd>ctrl</kbd>+<kbd>a</kdb> | Move the cursor to the first character in user input. |
+| --- | --- |
 | <kbd>ctrl</kbd>+<kbd>c</kbd> | Cancel the prompt. |
 | <kbd>ctrl</kbd>+<kbd>g</kdb> | Reset the prompt to its initial state. |
 
+<br>
+
 ### Move cursor
 
-Key combinations that may be used on prompts that support user input, such as the [input prompt](#input-prompt), [password prompt](#password-prompt), and [invisible prompt](#invisible-prompt)).
+These combinations may be used on prompts that support user input, such as the [input prompt](#input-prompt), [password prompt](#password-prompt), and [invisible prompt](#invisible-prompt)).
 
 | **command** | **description** |
-| ---: | --- |
+| --- | --- |
 | <kbd>left</kbd> | Move the cursor forward one character. |
 | <kbd>right</kbd> | Move the cursor back one character. |
 | <kbd>ctrl</kbd>+<kbd>a</kbd> | Move cursor to the start of the line |
@@ -968,90 +970,90 @@ Key combinations that may be used on prompts that support user input, such as th
 | <kbd>ctrl</kbd>+<kbd>f</kbd> | Move cursor forward one character |
 | <kbd>ctrl</kbd>+<kbd>x</kbd> | Toggle between first and cursor position |
 
-## Select choices
+<br>
+
+### Edit Input
+
+These key combinations may be used on prompts that support user input, such as the [input prompt](#input-prompt), [password prompt](#password-prompt), and [invisible prompt](#invisible-prompt)).
+
+| **command** | **description** |
+| --- | --- |
+| <kbd>ctrl</kbd>+<kbd>a</kbd> | Move cursor to the start of the line |
+| <kbd>ctrl</kbd>+<kbd>e</kbd> | Move cursor to the end of the line |
+| <kbd>ctrl</kbd>+<kbd>b</kbd> | Move cursor back one character |
+| <kbd>ctrl</kbd>+<kbd>f</kbd> | Move cursor forward one character |
+| <kbd>ctrl</kbd>+<kbd>x</kbd> | Toggle between first and cursor position |
+
+#### Mac
+
+| **command** | **description** |
+| --- | --- |
+| <kbd>delete</kbd> | Delete one character to the left. |
+| <kbd>fn</kbd>+<kbd>delete</kbd> | Delete one character to the right. |
+| <kbd>option</kbd>+<kbd>up</kbd> | Scroll to the previous item in history ([Input prompt](#input-prompt) only, when [history is enabled](examples/input/option-history.js)). |
+| <kbd>option</kbd>+<kbd>down</kbd> | Scroll to the next item in history ([Input prompt](#input-prompt) only, when [history is enabled](examples/input/option-history.js)). |
+
+#### Windows
+
+| **command** | **description** |
+| --- | --- |
+| <kbd>backspace</kbd> | Delete one character to the left. |
+| <kbd>delete</kbd> | Delete one character to the right (forward). |
+| <kbd>alt</kbd>+<kbd>up</kbd> | Scroll to the previous item in history ([Input prompt](#input-prompt) only, when [history is enabled](examples/input/option-history.js)). |
+| <kbd>alt</kbd>+<kbd>down</kbd> | Scroll to the next item in history ([Input prompt](#input-prompt) only, when [history is enabled](examples/input/option-history.js)). |
+
+<br>
+
+### Select choices
 
 These key combinations may be used on prompts that support _multiple_ choices, such as the [multiselect prompt](#multiselect-prompt), or the [select prompt](#select-prompt) when the `multiple` options is true.
 
 | **command** | **description** |
-| ---: | --- |
+| --- | --- |
 | <kbd>space</kbd> | Toggle the currently selected choice when `options.multiple` is true. |
 | <kbd>number</kbd> | Move the pointer to the choice at the given index. Also toggles the selected choice when `options.multiple` is true. |
 | <kbd>a</kbd> | Toggle all choices to be enabled or disabled. |
 | <kbd>i</kbd> | Invert the current selection of choices. |
 | <kbd>g</kbd> | Toggle the current choice group. |
 
+<br>
+
 ### Hide/show choices
 
 | **command** | **description** |
-| ---: | --- |
+| --- | --- |
 | <kbd>fn</kbd>+<kbd>up</kbd> | Decrease the number of visible choices by one. |
 | <kbd>fn</kbd>+<kbd>down</kbd> | Increase the number of visible choices by one. |
+
+<br>
 
 ### Move/lock Pointer
 
 | **command** | **description** |
-| ---: | --- |
+| --- | --- |
 | <kbd>number</kbd> | Move the pointer to the choice at the given index. Also toggles the selected choice when `options.multiple` is true. |
 | <kbd>up</kbd> | Move the pointer up. |
 | <kbd>down</kbd> | Move the pointer down. |
 | <kbd>ctrl</kbd>+<kbd>a</kbd> | Move the pointer to the first _visible_ choice. |
 | <kbd>ctrl</kbd>+<kbd>e</kbd> | Move the pointer to the last _visible_ choice. |
-| (mac) <kbd>fn</kbd>+<kbd>left</kbd> / (win) <kbd>home</kbd> | Move the pointer to the first choice in the choices array. |
-| (mac) <kbd>fn</kbd>+<kbd>right</kbd> / (win) <kbd>end</kbd> | Move the pointer to the last choice in the choices array. |
 | <kbd>shift</kbd>+<kbd>up</kbd> | Scroll up one choice without changing pointer position (locks the pointer while scrolling). |
 | <kbd>shift</kbd>+<kbd>down</kbd> | Scroll down one choice without changing pointer position (locks the pointer while scrolling). |
 
+#### Mac
+
+| **command** | **description** |
+| --- | --- |
+| <kbd>fn</kbd>+<kbd>left</kbd> | Move the pointer to the first choice in the choices array. |
+| <kbd>fn</kbd>+<kbd>right</kbd> | Move the pointer to the last choice in the choices array. |
+
+#### Windows
+
+| **command** | **description** |
+| --- | --- |
+| <kbd>home</kbd> | Move the pointer to the first choice in the choices array. |
+| <kbd>end</kbd> | Move the pointer to the last choice in the choices array. |
+
 <br>
-
-## ❯ Options
-
-Each prompt takes an options object (aka "question" object), that implements the following interface:
-
-```js
-{
-  // required
-  type: string | function,
-  name: string | function,
-  message: string | function | async function,
-
-  // optional 
-  initial: string | function | async function
-  format: function | async function,
-  result: function | async function,
-  validate: function | async function
-}
-```
-
-### General options
-
-All prompts take the following options.
-
-| **Property** | **Required?** | **Type** | **Description** |
-| --- | --- | --- | --- |
-| `type`     | Yes | `string\|function` | Enquirer uses this value to determine the type of prompt to run, but it's optional when prompts are run directly. |
-| `name`     | Yes | `string\|function` | Used as the key for the answer on the returned values (answers) object. |
-| `message`  | Yes | `string\|function` | The message to display when the prompt is rendered in the terminal. |
-| `initial`  | no | `string\|function` | The default value to return if the user does not supply a value. |
-| `format`   | no | `function` | Function to format user input in the terminal. |
-| `result`   | no | `function` | Function to format the final submitted value before it's returned. |
-| `validate` | no | `function` | Function to validate the submitted value before it's returned. This function may return a boolean or a string. If a string is returned it will be used as the validation error message. |
-
-**Example usage**
-
-```js
-const { prompt } = require('enquirer');
-
-const question = {
-  type: 'input',
-  name: 'username',
-  message: 'What is your username?'
-};
-
-prompt(question)
-  .then(answer => console.log('Answer:', answer))
-  .catch(console.error);
-```
-
 <br>
 
 ## ❯ Release History
@@ -1110,10 +1112,19 @@ $ npm install -g verbose/verb#dev verb-generate-readme && verb
 
 | **Commits** | **Contributor** |  
 | --- | --- |  
-| 72 | [jonschlinkert](https://github.com/jonschlinkert) |  
-| 12 | [doowb](https://github.com/doowb) |  
-| 1  | [mischah](https://github.com/mischah) |  
-| 1  | [skellock](https://github.com/skellock) |  
+| 238 | [jonschlinkert](https://github.com/jonschlinkert) |  
+| 24  | [doowb](https://github.com/doowb) |  
+| 8   | [g-plane](https://github.com/g-plane) |  
+| 3   | [tunnckoCore](https://github.com/tunnckoCore) |  
+| 2   | [DanielRuf](https://github.com/DanielRuf) |  
+| 1   | [gabel0287](https://github.com/gabel0287) |  
+| 1   | [ImgBotApp](https://github.com/ImgBotApp) |  
+| 1   | [jsonkao](https://github.com/jsonkao) |  
+| 1   | [knpwrs](https://github.com/knpwrs) |  
+| 1   | [yeskunall](https://github.com/yeskunall) |  
+| 1   | [mischah](https://github.com/mischah) |  
+| 1   | [sbugert](https://github.com/sbugert) |  
+| 1   | [skellock](https://github.com/skellock) |  
 
 ### Author
 
@@ -1129,5 +1140,5 @@ Thanks to [derhuerst](https://github.com/derhuerst), creator of prompt libraries
 
 ### License
 
-Copyright © 2018, [Jon Schlinkert](https://github.com/jonschlinkert).
+Copyright © 2018-present, [Jon Schlinkert](https://github.com/jonschlinkert).
 Released under the [MIT License](LICENSE).

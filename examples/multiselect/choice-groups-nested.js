@@ -1,8 +1,12 @@
-const Prompt = require('../../lib/prompts/multiselect');
-const prompt = new Prompt({
-  name: 'example-groups',
-  message: 'What are your favorite colors?',
-  symbols: { indicator: '$' },
+'use strict';
+
+const { MultiSelect } = require('enquirer');
+const log = require('../log-keypress');
+
+const prompt = new MultiSelect({
+  name: 'items',
+  message: 'Choose your items',
+  header: () => 'Keypress: ' + log(prompt),
   choices: [
     { name: 'foo', choices: ['a', 'b', { name: 'c', disabled: true }] },
     { name: 'bar', choices: ['d', 'e', 'f'] },

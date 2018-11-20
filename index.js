@@ -20,7 +20,7 @@ const utils = require('./lib/utils');
 class Enquirer extends Events {
   constructor(options, answers) {
     super();
-    this.options = { ...options };
+    this.options = utils.merge({}, options);
     this.answers = { ...answers };
   }
 
@@ -79,7 +79,11 @@ class Enquirer extends Events {
     let cancel = false;
 
     for (let question of [].concat(questions)) {
-      let opts = { ...this.options, ...question };
+      if (typeof question === 'function') {
+        question = await question.call(this);
+      }
+
+      let opts = utils.merge({}, this.options, question);
 
       let { type, name } = question;
       if (typeof type === 'function') type = await type.call(this, question);
@@ -93,6 +97,7 @@ class Enquirer extends Events {
       let value = utils.get(this.answers, name);
 
       this.emit('prompt', prompt, this.answers);
+      prompt.state.answers = this.answers;
 
       if (opts.autofill && value != null) {
         prompt.value = prompt.input = value;
@@ -101,23 +106,24 @@ class Enquirer extends Events {
         continue;
       }
 
-      if (opts.skip && await opts.skip(state)) {
+      let skipped = typeof opts.skip === 'function'
+        ? await opts.skip(state)
+        : opts.skip === true;
+
+      if (skipped) {
         continue;
       }
 
-      prompt.state.answers = this.answers;
-
       // bubble events
-      let emit = prompt.emit.bind(prompt);
+      let emit = prompt.emit;
       prompt.emit = (...args) => {
-        this.emit(...args.concat(state));
-        return emit(...args);
+        this.emit(...args);
+        return emit.call(prompt, ...args);
       };
 
       try {
         value = await prompt.run();
         if (name) this.answers[name] = value;
-
         cancel = opts.onSubmit && await opts.onSubmit(name, value, prompt);
       } catch (err) {
         cancel = !(await onCancel(name, value, prompt));
@@ -151,17 +157,6 @@ class Enquirer extends Events {
   use(plugin) {
     plugin.call(this, this);
     return this;
-  }
-
-  submit(value, state) {
-    this.submitted = true;
-    this.emit('submit', value, state);
-    this.emit('answer', state.prompt.name, value, state);
-  }
-
-  cancel(error, state) {
-    this.cancelled = true;
-    this.emit('cancel', error, state);
   }
 
   state(prompt, question) {
@@ -210,8 +205,8 @@ class Enquirer extends Events {
    */
 
   static get prompt() {
-    const fn = (questions, onSubmit, onCancel) => {
-      let enquirer = new this({ onSubmit, onCancel });
+    const fn = (questions, ...rest) => {
+      let enquirer = new this(...rest);
       let emit = enquirer.emit.bind(enquirer);
       enquirer.emit = (...args) => {
         fn.emit(...args);
@@ -238,5 +233,14 @@ for (let name of Object.keys(prompts)) {
     Reflect.defineProperty(Enquirer, name, { get: () => prompts[name] });
   }
 }
+
+const exp = name => {
+  utils.defineExport(Enquirer, name, () => Enquirer.types[name]);
+};
+
+exp('ArrayPrompt');
+exp('BooleanPrompt');
+exp('NumberPrompt');
+exp('StringPrompt');
 
 module.exports = Enquirer;

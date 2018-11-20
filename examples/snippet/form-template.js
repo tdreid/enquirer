@@ -1,13 +1,13 @@
-const Prompt = require('../../lib/prompts/snippet');
-const prompt = new Prompt({
+'use strict';
+
+const { Snippet } = require('enquirer');
+const prompt = new Snippet({
   name: 'username',
-  message: 'Fill out the fields in package.json',
+  message: 'Please add the following config values',
   template: `
       First Name: #{first_name}
        Last Name: #{last_name}
  GitHub username: #{username}
-          Domain: #{company:sellside}
-           Email: #{email:username}@#{domain:company}.com
 
 `
 });

@@ -1,11 +1,14 @@
-const Prompt = require('../../lib/prompts/multiselect');
-const prompt = new Prompt({
+'use strict';
+
+const { MultiSelect } = require('enquirer');
+
+const prompt = new MultiSelect({
   name: 'value',
   message: 'Pick your favorite colors',
   choices: [
     { name: 'aqua', value: '#00ffff' },
     { name: 'black', value: '#000000' },
-    { name: 'blue', value: '#0000ff', hint: '(this is a choice hint)' },
+    { name: 'blue', value: '#0000ff' },
     { name: 'fuchsia', value: '#ff00ff' },
     { name: 'gray', value: '#808080', disabled: true },
     { name: 'green', value: '#008000' },

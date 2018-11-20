@@ -5,7 +5,8 @@ interface BasePromptOptions {
   initial?: any
   format?(value: string): string | Promise<string>
   result?(value: string): string | Promise<string>
-  validate?(value: string): boolean | Promise<boolean>
+  skip?: ((state: object) => boolean | Promise<boolean>) | boolean
+  validate?(value: string): boolean | Promise<boolean> | string | Promise<string>
   stdin?: NodeJS.ReadStream
   stdout?: NodeJS.WriteStream
 }
@@ -116,7 +117,7 @@ declare class Enquirer<T = object> extends NodeJS.EventEmitter {
 }
 
 declare namespace Enquirer {
-  function prompt(questions: PromptOptions | PromptOptions[]): Promise<object>;
+  function prompt<T = object>(questions: PromptOptions | PromptOptions[]): Promise<T>;
 
   class Prompt extends BasePrompt {}
 }

@@ -1,7 +1,9 @@
-const Prompt = require('../../lib/prompts/multiselect');
-const colors = require('ansi-colors');
+'use strict';
 
-const prompt = new Prompt({
+const colors = require('ansi-colors');
+const { MultiSelect } = require('enquirer');
+
+const prompt = new MultiSelect({
   name: 'food',
   message: 'What are your favorite foods?',
   choices: [
@@ -10,12 +12,11 @@ const prompt = new Prompt({
     { name: 'chicken_curry', message: 'Chicken Curry' },
     { name: 'tacos', message: 'Tacos' }
   ],
-  symbols: { indicator: '❤' },
   indicator(state, choice) {
     if (choice.enabled) {
-      return colors.red(state.symbols.indicator);
+      return colors.red(state.symbols.heart);
     }
-    return colors.dim.gray(state.symbols.indicator);
+    return colors.dim.gray(state.symbols.heart);
   }
 });
 

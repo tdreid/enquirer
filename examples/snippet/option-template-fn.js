@@ -1,5 +1,7 @@
-const Prompt = require('../../lib/prompts/snippet');
-const prompt = new Prompt({
+'use strict';
+
+const { Snippet } = require('enquirer');
+const prompt = new Snippet({
   name: 'username',
   message: 'Fill out the fields in package.json',
   defaults: {
@@ -33,7 +35,7 @@ const prompt = new Prompt({
 prompt.run()
   .then(answer => {
     console.log('Answer:', answer.values);
-    console.log('---')
+    console.log('---');
     console.log(answer.rendered);
   })
   .catch(console.error);

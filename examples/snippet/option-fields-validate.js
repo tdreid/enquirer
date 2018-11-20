@@ -1,7 +1,8 @@
-const colors = require('ansi-colors');
-const semver = require('semver');
-const Prompt = require('../../lib/prompts/snippet');
-const prompt = new Prompt({
+'use strict';
+
+const { Snippet } = require('enquirer');
+
+const prompt = new Snippet({
   name: 'username',
   message: 'Fill out the fields in package.json',
   template: `{
@@ -45,7 +46,7 @@ const prompt = new Prompt({
       validate(value) {
         return value !== '' && value !== 'jon';
       }
-    },
+    }
     // {
     //   name: 'license',
     //   validate(value) {

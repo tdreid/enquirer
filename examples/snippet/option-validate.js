@@ -1,7 +1,9 @@
+'use strict';
+
 const colors = require('ansi-colors');
 const semver = require('semver');
-const Prompt = require('../../lib/prompts/snippet');
-const prompt = new Prompt({
+const { Snippet } = require('enquirer');
+const prompt = new Snippet({
   name: 'username',
   message: 'Fill out the fields in package.json',
   defaults: {
@@ -11,12 +13,17 @@ const prompt = new Prompt({
   },
   required: 'description',
   initial: 'version',
-  validate(value, state, item, index) {
-    if (item && item.name === 'version' && !semver.valid(value)) {
-      return colors.red('version should be a valid semver value');
+  fields: [
+    {
+      name: 'version',
+      validate(value, state, field) {
+        if (field && field.name === 'version' && !semver.valid(value)) {
+          return colors.red('expected a valid semver value');
+        }
+        return true;
+      }
     }
-    return true;
-  },
+  ],
   template: `{
   "name": "{{name}}",
   "description": "{{description}}",
